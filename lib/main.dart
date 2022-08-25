@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:git_flutter_demo/views/second_page.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home: Scaffold(
-      body: Center(
-        child: Text('Hello World'),
-      ),
-    ),
-  ));
+  runApp(const MaterialApp(home: SecondPage()));
 }

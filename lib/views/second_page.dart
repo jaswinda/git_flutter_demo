@@ -1,51 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:git_flutter_demo/views/home_screen.dart';
 
 class SecondPage extends StatefulWidget {
-  const SecondPage({Key? key}) : super(key: key);
+  int count;
+  final Function superAdd;
+  SecondPage({Key? key, required this.count, required this.superAdd})
+      : super(key: key);
 
   @override
   State<SecondPage> createState() => _SecondPageState();
 }
 
 class _SecondPageState extends State<SecondPage> {
-  var count = 1;
+  var my_new_count = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    my_new_count = widget.count;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton(
-              onPressed: () {
-                count++;
-                setState(() {});
-                print(count);
-              },
-              child: const Text("Add")),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => Home(
-                              count: count,
-                            ))));
-              },
-              child: const Text("Go to next page")),
-
           Center(
               child: Text(
-            count.toString(),
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ))
-          // TextField(
-          //     decoration:
-          //         InputDecoration(icon: Icon(Icons.email), prefixText: "Email"))
+            my_new_count.toString(),
+            style: const TextStyle(fontSize: 50),
+          )),
+          ElevatedButton(onPressed: () => add(), child: const Text("Add"))
         ],
       ),
-    ));
+    );
+  }
+
+  add() {
+    my_new_count++;
+    widget.superAdd();
+    setState(() {});
+    print(widget.count);
   }
 }

@@ -21,7 +21,7 @@ class FirstPage extends StatelessWidget {
               onPressed: () {
                 Get.to(SecondPage());
               },
-              child: const Text("Go To  Second Page"))
+             )
         ],
       ),
     );

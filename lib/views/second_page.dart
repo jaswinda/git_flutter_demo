@@ -1,46 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:git_flutter_demo/controller/counter_controller.dart';
 
-class SecondPage extends StatefulWidget {
-  int count;
-  final Function superAdd;
-  SecondPage({Key? key, required this.count, required this.superAdd})
-      : super(key: key);
-
-  @override
-  State<SecondPage> createState() => _SecondPageState();
-}
-
-class _SecondPageState extends State<SecondPage> {
-  var my_new_count = 0;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    my_new_count = widget.count;
-  }
-
+class SecondPage extends StatelessWidget {
+  SecondPage({Key? key}) : super(key: key);
+  final counter = Get.find<Counter>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-              child: Text(
-            my_new_count.toString(),
-            style: const TextStyle(fontSize: 50),
-          )),
-          ElevatedButton(onPressed: () => add(), child: const Text("Add"))
+          Obx(() => Center(child: Text(counter.count.toString()))),
+          ElevatedButton(
+              onPressed: () => counter.increment(),
+              child: const Text("Increment"))
         ],
       ),
     );
-  }
-
-  add() {
-    my_new_count++;
-    widget.superAdd();
-    setState(() {});
-    print(widget.count);
   }
 }

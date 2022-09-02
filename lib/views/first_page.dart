@@ -29,7 +29,7 @@ class _FirstPageState extends State<FirstPage> {
                               superAdd: add,
                             ))));
               },
-              child: const Text("Go to next page")),
+              child: const Text("Go to Next Page")),
 
           Center(
               child: Text(

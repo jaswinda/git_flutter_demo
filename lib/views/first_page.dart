@@ -1,52 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:git_flutter_demo/views/second_page.dart';
+import 'package:get/get.dart';
+import 'package:git_flutter_demo/controller/counter_controller.dart';
 
-class FirstPage extends StatefulWidget {
-  const FirstPage({Key? key}) : super(key: key);
+import 'second_page.dart';
 
-  @override
-  State<FirstPage> createState() => _FirstPageState();
-}
-
-class _FirstPageState extends State<FirstPage> {
-  var count = 1;
-
+class FirstPage extends StatelessWidget {
+  FirstPage({Key? key}) : super(key: key);
+  final counter = Get.put(Counter());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton(onPressed: () => add(), child: const Text("Add")),
+          Obx(() => Center(child: Text(counter.count.toString()))),
+          ElevatedButton(
+              onPressed: () => counter.increment(),
+              child: const Text("Increment")),
           ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => SecondPage(
-                              count: count,
-                              superAdd: add,
-                            ))));
+                Get.to(SecondPage());
               },
-              child: const Text("Go to Next Page")),
-
-          Center(
-              child: Text(
-            count.toString(),
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ))
-          // TextField(
-          //     decoration:
-          //         InputDecoration(icon: Icon(Icons.email), prefixText: "Email"))
+             )
         ],
       ),
-    ));
-  }
-
-  add() {
-    count++;
-    setState(() {});
-    print(count);
+    );
   }
 }

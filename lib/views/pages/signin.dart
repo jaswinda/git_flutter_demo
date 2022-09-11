@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:git_flutter_demo/controllers/authentication_controller.dart';
+import 'package:git_flutter_demo/views/conponents/custom_text_field.dart';
 
 class SignIn extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
+  final AuthenticationController authenticationController =
+      Get.put(AuthenticationController());
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   SignIn({Key? key}) : super(key: key);
@@ -24,34 +29,22 @@ class SignIn extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic),
                 )),
-                TextFormField(
+                CustomTextField(
                   controller: emailController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Email',
-                  ),
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter email';
-                    }
-                    if (value.contains("@") == false) {
-                      return 'Please enter valid email';
+                    if (!value!.contains('@')) {
+                      return 'Please enter a valid email';
                     }
                     return null;
                   },
                 ),
-                TextFormField(
+                CustomTextField(
                   controller: passwordController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                  ),
+                  label: 'Password',
+                  isPassword: true,
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter password';
-                    }
-                    if (value.length < 6) {
-                      return 'Password must be at least 6 characters';
+                    if (value!.length < 6) {
+                      return 'Please enter a valid password';
                     }
                     return null;
                   },
@@ -60,7 +53,12 @@ class SignIn extends StatelessWidget {
                     onPressed: () {
                       var isValid = formKey.currentState!.validate();
                       if (isValid) {
-                        print(emailController.text);
+                        var data = {
+                          'email': emailController.text,
+                          'password': passwordController.text
+                        };
+                        print(data);
+                        authenticationController.signUp(data);
                       }
                     },
                     child: const Text("SignIn"))

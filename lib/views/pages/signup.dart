@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 import 'package:git_flutter_demo/controllers/authentication_controller.dart';
 import 'package:git_flutter_demo/views/conponents/custom_text_field.dart';
 
-class SignIn extends StatelessWidget {
+class SignUp extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
   final AuthenticationController authenticationController =
       Get.find<AuthenticationController>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  SignIn({Key? key}) : super(key: key);
+  SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class SignIn extends StatelessWidget {
               children: [
                 const Center(
                     child: Text(
-                  'Sign In',
+                  'Sign Up',
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -49,23 +49,19 @@ class SignIn extends StatelessWidget {
                     return null;
                   },
                 ),
-                Obx(() => Container(
-                      child: authenticationController.isLoading.value
-                          ? const CircularProgressIndicator()
-                          : ElevatedButton(
-                              onPressed: () {
-                                var isValid = formKey.currentState!.validate();
-                                if (isValid) {
-                                  var data = {
-                                    'email': emailController.text,
-                                    'password': passwordController.text
-                                  };
-                                  print(data);
-                                  authenticationController.signIn(data);
-                                }
-                              },
-                              child: const Text("SignIn")),
-                    ))
+                ElevatedButton(
+                    onPressed: () {
+                      var isValid = formKey.currentState!.validate();
+                      if (isValid) {
+                        var data = {
+                          'email': emailController.text,
+                          'password': passwordController.text
+                        };
+                        print(data);
+                        authenticationController.signUp(data);
+                      }
+                    },
+                    child: const Text("SignUp"))
               ],
             ),
           ),

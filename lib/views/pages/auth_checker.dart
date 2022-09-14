@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:git_flutter_demo/service/auth_service.dart';
-import 'package:git_flutter_demo/views/pages/home.dart';
+import 'package:git_flutter_demo/views/pages/tabs/home.dart';
+import 'package:git_flutter_demo/views/pages/my_home_page.dart';
 import 'package:git_flutter_demo/views/pages/signin.dart';
 
 class AuthChecker extends StatefulWidget {
@@ -23,9 +24,9 @@ class _AuthCheckerState extends State<AuthChecker> {
     var token = await authService.getToken();
     print(token);
     if (token != null) {
-      Get.to(Home());
+      Get.to(() => const MyHomePage());
     } else {
-      Get.to(SignIn());
+      Get.to(() => SignIn());
     }
   }
 

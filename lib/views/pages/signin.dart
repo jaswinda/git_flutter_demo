@@ -21,6 +21,8 @@ class SignIn extends StatelessWidget {
             key: formKey,
             child: Column(
               children: [
+                Image.asset("/assets/images/logoa.png",
+                    height: 200, width: 200),
                 const Center(
                     child: Text(
                   'Sign In',

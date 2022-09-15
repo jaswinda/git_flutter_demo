@@ -21,8 +21,11 @@ class SignIn extends StatelessWidget {
             key: formKey,
             child: Column(
               children: [
-                Image.asset("/assets/images/logoa.png",
-                    height: 200, width: 200),
+                Image.asset("assets/images/logoa.png", height: 200, width: 200),
+                Image.network(
+                    "https://cdn.kimkim.com/files/a/content_articles/featured_photos/0a99949f58bc92145369e8363c64c33bfd85f819/big-68acc559aad8def0f326f4d62e8faf78.jpg",
+                    height: 200,
+                    width: 200),
                 const Center(
                     child: Text(
                   'Sign In',

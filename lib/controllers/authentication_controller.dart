@@ -31,8 +31,9 @@ class AuthenticationController extends GetxController {
     var success = result['success'];
     if (success) {
       var token = result['token'];
+      var isAdmin = result['isAdmin'];
       print(token);
-      await authService.savetoken(token);
+      await authService.savetoken(token, isAdmin: isAdmin);
       Get.snackbar("Success", result['message']);
       Get.to(const AuthChecker());
     } else {

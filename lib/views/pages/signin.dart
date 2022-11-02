@@ -68,7 +68,6 @@ class SignIn extends StatelessWidget {
                                       'email': emailController.text,
                                       'password': passwordController.text
                                     };
-                                    print(data);
                                     authenticationController.signIn(data);
                                   }
                                 },

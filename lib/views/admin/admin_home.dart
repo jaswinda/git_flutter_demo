@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:git_flutter_demo/views/admin/components/admin_button.dart';
 import 'package:git_flutter_demo/views/admin/pages/category_page.dart';
+import 'package:git_flutter_demo/views/admin/pages/product_page.dart';
 
 class AdminHome extends StatelessWidget {
   const AdminHome({Key? key}) : super(key: key);
@@ -20,6 +21,11 @@ class AdminHome extends StatelessWidget {
             AdminButton(
               onTap: () => Get.to(() => const Categories()),
               icon: Icons.pages_outlined,
+            ),
+            AdminButton(
+              onTap: () => Get.to(() => const Product()),
+              icon: Icons.home,
+              title: "Product",
             ),
           ]),
         ),

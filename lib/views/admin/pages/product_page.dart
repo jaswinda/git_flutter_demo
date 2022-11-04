@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:git_flutter_demo/views/admin/components/add_category.dart';
+import 'package:git_flutter_demo/views/admin/components/add_product.dart';
 import 'package:git_flutter_demo/views/admin/components/admin_button.dart';
 
 class Product extends StatelessWidget {
@@ -13,13 +13,12 @@ class Product extends StatelessWidget {
       body: Column(
         children: [
           AdminButton(
-              title: "Add Product",
-              onTap: () {
-                Get.bottomSheet(AddCategory(
-                    nameController: TextEditingController(),
-                    descriptionController: TextEditingController()));
-              },
-              icon: Icons.add),
+            icon: Icons.add,
+            title: "Add Product",
+            onTap: () {
+              Get.to(() => const AddEditProductForm());
+            },
+          ),
           const Center(
             child: Text('Prouduts'),
           ),

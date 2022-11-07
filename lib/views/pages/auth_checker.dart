@@ -22,11 +22,11 @@ class _AuthCheckerState extends State<AuthChecker> {
   checkIfLoggedIn() async {
     AuthService authService = AuthService();
     var token = await authService.getToken();
-    print(token);
+
     if (token != null) {
       var isAdmin = await authService.getIsAdmin();
       if (isAdmin) {
-        Get.off(() => const AdminHome());
+        Get.off(() => AdminHome());
       } else {
         Get.off(() => const MyHomePage());
       }

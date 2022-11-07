@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:git_flutter_demo/controllers/authentication_controller.dart';
 import 'package:git_flutter_demo/views/admin/components/admin_button.dart';
 import 'package:git_flutter_demo/views/admin/pages/category_page.dart';
 import 'package:git_flutter_demo/views/admin/pages/product_page.dart';
 
 class AdminHome extends StatelessWidget {
-  const AdminHome({Key? key}) : super(key: key);
+  final AuthenticationController authenticationController =
+      Get.find<AuthenticationController>();
+  AdminHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +29,11 @@ class AdminHome extends StatelessWidget {
               onTap: () => Get.to(() => const Product()),
               icon: Icons.home,
               title: "Product",
+            ),
+            AdminButton(
+              onTap: () => authenticationController.signOut(),
+              icon: Icons.home,
+              title: "Logout",
             ),
           ]),
         ),

@@ -190,7 +190,12 @@ class _AddEditProductFormState extends State<AddEditProductForm> {
                             "category_id": categoryIdController.text,
                             "price": priceController.text
                           };
-                          productController.add(data);
+                          if (pickedFile != null) {
+                            productController.add(
+                                data: data, image: pickedFile!);
+                          } else {
+                            Get.snackbar("Error", "Please add a Image");
+                          }
                         }
                       },
                       child: const Text('Save')),

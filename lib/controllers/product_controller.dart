@@ -7,11 +7,12 @@ import 'package:http/http.dart' as http;
 import 'package:git_flutter_demo/utils/api.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../models/product.dart';
+
 class ProductController extends GetxController {
   AuthService authService = AuthService();
   var isLoading = false.obs;
-  var products = [].obs;
-
+  RxList<Product> products = RxList<Product>([]);
   //onit
   @override
   void onInit() {
@@ -46,7 +47,9 @@ class ProductController extends GetxController {
     isLoading.value = true;
     var response = await http.get(Uri.parse(GET_PRODUCTS_API));
     isLoading.value = false;
-    products.value = jsonDecode(response.body)["data"];
+    var products = jsonDecode(response.body)["data"];
+    this.products.value =
+        products.map<Product>((e) => Product.fromJson(e)).toList();
     print(products);
     update();
   }

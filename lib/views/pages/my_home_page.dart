@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:git_flutter_demo/views/pages/cart_page.dart';
 import 'package:git_flutter_demo/views/pages/tabs/home.dart';
 import 'package:tabnavigator/tabnavigator.dart';
 
@@ -23,8 +24,8 @@ class _MyHomePageState extends State<MyHomePage> {
       return Home();
     },
     AppTab.cart: () {
-      return const Center(
-        child: Text('cart'),
+      return Center(
+        child: Cart(),
       );
     },
     AppTab.info: () {

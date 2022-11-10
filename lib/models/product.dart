@@ -17,12 +17,14 @@ class Product {
     required this.description,
     required this.price,
     required this.category,
+    this.quantity,
   });
 
   String id;
   String image;
   String description;
   String price;
+  String? quantity;
   String category;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(

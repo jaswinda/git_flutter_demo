@@ -27,4 +27,6 @@ class CategoryController extends GetxController {
     }
     isLoading.value = false;
   }
+
+  
 }

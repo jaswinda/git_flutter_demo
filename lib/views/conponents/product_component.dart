@@ -51,25 +51,30 @@ class ProductComponent extends StatelessWidget {
                             child: Image.network("$BASE_URL/${product.image}")),
                         Text(product.description),
                         Text(product.price.toString()),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                                onPressed: () => cartController.decrement(),
+                                icon: const Icon(Icons.remove)),
+                            Obx(() => Text(
+                                  cartController.quantity.toString(),
+                                  style: const TextStyle(fontSize: 20),
+                                )),
+                            IconButton(
+                                onPressed: () => cartController.increment(),
+                                icon: const Icon(Icons.add)),
+                          ],
+                        ),
                         ElevatedButton(
                             onPressed: () {
-                              // cartController.addProduct(product);
-                              // Get.back();
+                              cartController.add(product);
+                             
                             },
                             child: const Text('Add to cart'))
                       ],
                     ),
                   ));
-                  // cartController.add(
-                  //   Product(
-                  //       id: product.id,
-                  //       description: product.description,
-                  //       image: product.image,
-                  //       price: product.price,
-                  //       quantity: "1",
-                  //       category: product.category),
-
-                  // );
                 },
                 child: const CircleAvatar(child: Icon(Icons.shopping_cart)))),
       ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:git_flutter_demo/controllers/cart_controller.dart';
 import 'package:git_flutter_demo/utils/api.dart';
+import 'package:git_flutter_demo/views/payment/khalti.dart';
 
 import '../../models/product.dart';
 
@@ -39,7 +40,7 @@ class Cart extends StatelessWidget {
               color: Colors.black,
               width: Get.width,
               child: TextButton(
-                onPressed: () => Get.snackbar("Success", "Order placed"),
+                onPressed: () => Get.to(const KhaltiPayment()),
                 child: Text(
                   "Place Order Rs${cartController.total.value}",
                   style: const TextStyle(color: Colors.white),

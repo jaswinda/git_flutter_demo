@@ -5,3 +5,4 @@ const ADD_CATEGORY_API = "$BASE_URL/addCategory.php";
 const ADD_PRODUCT_API = "$BASE_URL/addProduct.php";
 const GET_PRODUCTS_API = "$BASE_URL/getProducts.php";
 const UPDATE_CATEGORY_API = "$BASE_URL/login.php";
+const ORDER_API = "$BASE_URL/order.php";

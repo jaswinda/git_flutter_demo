@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:git_flutter_demo/controllers/order_controller.dart';
 import 'package:khalti/khalti.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
@@ -42,6 +44,7 @@ class WalletPayment extends StatefulWidget {
 class _WalletPaymentState extends State<WalletPayment> {
   late final TextEditingController _mobileController, _pinController;
   final GlobalKey<FormState> _formKey = GlobalKey();
+  final OrderController orderController = Get.find();
 
   @override
   void initState() {
@@ -132,6 +135,8 @@ class _WalletPaymentState extends State<WalletPayment> {
                   );
 
                   debugPrint(model.toString());
+                  var paymentToken = model.token;
+                  orderController.order(paymentToken, 10);
                 } catch (e) {
                   ScaffoldMessenger.maybeOf(context)?.showSnackBar(
                     SnackBar(content: Text(e.toString())),

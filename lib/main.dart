@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:git_flutter_demo/controllers/authentication_controller.dart';
+import 'package:git_flutter_demo/controllers/order_controller.dart';
 import 'package:git_flutter_demo/views/pages/auth_checker.dart';
 import 'package:khalti/khalti.dart';
 
@@ -14,6 +15,7 @@ Future<void> main() async {
   );
   Get.put(AuthenticationController());
   Get.put(CartController());
+  Get.put(OrderController());
 
   runApp(const GetMaterialApp(home: AuthChecker()));
 }
